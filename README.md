@@ -30,4 +30,4 @@ Build Anserini and copy the fatjar (important) artifact into the root directory 
 3. Execute the `.docker/run.sh` file.
 4. Execute the `load.sh` script within the Docker container.
     - `docker exec solr ./load.sh`
-5. Reload each core from the admin UI (`http://localhost:8983`).
+5. Wait about 10 seconds and reload each core from the admin UI (`http://localhost:8983`).
