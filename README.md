@@ -22,7 +22,7 @@ This has been automated through a number of scripts to automatically load `core1
 Instructions
 ============
 
-Build Anserini and copy the fatjar (important) artifact into the root directory of the SolrAnserini repo.
+Build Anserini and copy the fatjar (important) artifact into the root directory of the SolrAnserini repo, changing the name to `anserini.jar`.
 
 1. Build the Docker image for anserini-solr
     - `docker build -t anserini-solr .`
