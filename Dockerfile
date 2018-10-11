@@ -16,10 +16,7 @@ WORKDIR /opt/solr/
 COPY --chown=solr anserini.jar lib/
 
 # Copy the configsets.
-COPY --chown=solr .docker/configsets/. server/solr/configsets
-
-# Copy the script to symlink the index directories.
-COPY --chown=solr .docker/load.sh .
+COPY --chown=solr configsets/. server/solr/configsets
 
 # Create cores
 RUN precreate-core core17 server/solr/configsets/core17
