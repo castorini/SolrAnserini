@@ -26,7 +26,6 @@ def run():
     print("Sleeping for 10 seconds while Solr starts...")
     time.sleep(10)
 
-    # Remove lock file
     for index in config["indexes"]:
         # Remove the lock file, if exists.
         container.exec_run("rm -f %s" % os.path.join(config["index_mount"], index["name"], "write.lock"), user='solr')
@@ -35,6 +34,7 @@ def run():
         container.exec_run("rm -rf %s" % os.path.join("/opt/solr/server/solr/mycores", index["name"], "data/index"),
                            user='solr')
 
+        # Create link to data volume
         container.exec_run("ln -s %s %s" % (os.path.join(config["index_mount"], index["name"]),
                                             os.path.join("/opt/solr/server/solr/mycores", index["name"], "data/index")),
                            user='solr')
