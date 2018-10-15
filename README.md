@@ -7,6 +7,8 @@ Docker
 
 In order to integrate Anserini and Solr, we'll be using [Docker](https://www.docker.com/) - make sure this is setup on your machine before continuing.
 
+Additionally, ensure that the Docker SDK for Python is installed via `pip install docker`
+
 Overview
 ========
 
