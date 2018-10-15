@@ -7,9 +7,9 @@ import docker
 from docker.errors import NotFound
 
 
-def run():
+def run(config_path):
     # Load config file
-    with open("config.json") as file:
+    with open(config_path) as file:
         config = json.load(file)
 
     # Docker API client
@@ -99,4 +99,9 @@ def run_container(client, config):
 
 
 if __name__ == '__main__':
-    run()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--config", default="config.json", type=str)
+
+    args = parser.parse_args()
+
+    run(args.config)
