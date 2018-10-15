@@ -100,7 +100,7 @@ def run_container(client, config):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument("--config", default="config.json", type=str)
+    parser.add_argument("--config", default="config.json", type=str, help="The config file location.")
 
     args = parser.parse_args()
 
