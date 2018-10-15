@@ -7,6 +7,8 @@ Docker
 
 In order to integrate Anserini and Solr, we'll be using [Docker](https://www.docker.com/) - make sure this is setup on your machine before continuing.
 
+Additionally, ensure that the Docker SDK for Python is installed via `pip install docker`
+
 Overview
 ========
 
@@ -24,10 +26,7 @@ Instructions
 
 Build Anserini and copy the fatjar (important) artifact into the root directory of the SolrAnserini repo, changing the name to `anserini.jar`.
 
-1. Build the Docker image for anserini-solr
-    - `docker build -t anserini-solr .`
-2. Edit the `.docker/run.sh` file to point at the directory where your Anserini generated Lucene indices are.
-3. Execute the `.docker/run.sh` file.
-4. Execute the `load.sh` script within the Docker container.
-    - `docker exec solr ./load.sh`
-5. Wait about 10 seconds and reload each core from the admin UI (`http://localhost:8983`).
+1. Edit the `config.json` file to point to the index and config locations on the host machine.
+2. Run the Python script to build the Docker image with index and config volumes mounted.
+    - `python run.py` (optionally specifying `--config <config_location>`)
+3. Wait about 20 seconds and reload each core from the admin UI (`http://localhost:8983`).

@@ -1,0 +1,16 @@
+{
+  "image_name": "solr-anserini",
+  "index_mount": "/",
+  "indexes": [
+    {
+      "name": "core17",
+      "index_path": "../index/lucene-index.core17.pos+docvectors+rawdocs",
+      "config_path": "configsets/core17"
+    },
+    {
+      "name": "mb11",
+      "index_path": "../index/lucene-index.mb11.pos+docvectors+rawdocs",
+      "config_path": "configsets/mb11"
+    }
+  ]
+}
