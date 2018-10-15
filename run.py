@@ -1,3 +1,4 @@
+import argparse
 import json
 import os
 import time
@@ -43,7 +44,7 @@ def run():
 # Remove any existing containers
 def remove_existing(client, config):
     try:
-        container = client.containers.get(config["name"])
+        container = client.containers.get(config["image_name"])
         container.stop()
         container.remove()
     except NotFound:
@@ -52,7 +53,7 @@ def remove_existing(client, config):
 
 # Build the container
 def build_container(client, config):
-    for line in client.api.build(path=".", tag=config["name"]):
+    for line in client.api.build(path=".", tag=config["image_name"]):
         print(line)
 
 
@@ -61,16 +62,16 @@ def get_volumes(config):
 
     for index in config["indexes"]:
         # Path on host for index
-        index_path_host = index["index_path"]
+        index_path_host = os.path.join(os.getcwd(), index["index_path"])
 
         # Path in container for index
         index_path_container = os.path.join(config["index_mount"], index["name"])
 
         # Path on host for configs
-        config_path_host = index["config_path"]
+        config_path_host = os.path.join(os.getcwd(), index["config_path"])
 
         # Path in container for configs
-        config_path_container = os.path.join(config["config_mount"], index["name"])
+        config_path_container = os.path.join("/opt/solr/server/solr/configsets", index["name"])
 
         # Add the binding for index paths
         volumes[index_path_host] = {
@@ -89,9 +90,9 @@ def get_volumes(config):
 
 def run_container(client, config):
     volumes = get_volumes(config)
-    return client.containers.run(config["name"],
+    return client.containers.run(config["image_name"],
                                  detach=True,
-                                 name=config["name"],
+                                 name=config["image_name"],
                                  ports={"8983": "8983"},
                                  user="solr",
                                  volumes=volumes)

@@ -1,17 +1,16 @@
 {
-  "name": "solr",
+  "image_name": "solr-anserini",
   "index_mount": "/",
-  "config_mount": "/opt/solr/server/solr/configsets",
   "indexes": [
     {
       "name": "core17",
-      "index_path": "/home/ryan/waterloo/projects/index/lucene-index.core17.pos+docvectors+rawdocs",
-      "config_path": "/home/ryan/waterloo/projects/SolrAnserini/configsets/core17"
+      "index_path": "../index/lucene-index.core17.pos+docvectors+rawdocs",
+      "config_path": "configsets/core17"
     },
     {
       "name": "mb11",
-      "index_path": "/home/ryan/waterloo/projects/index/lucene-index.mb11.pos+docvectors+rawdocs",
-      "config_path": "/home/ryan/waterloo/projects/SolrAnserini/configsets/mb11"
+      "index_path": "../index/lucene-index.mb11.pos+docvectors+rawdocs",
+      "config_path": "configsets/mb11"
     }
   ]
 }
