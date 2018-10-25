@@ -13,7 +13,7 @@ def run(config_path):
         config = json.load(file)
 
     # Docker API client
-    client = docker.from_env()
+    client = docker.from_env(version="auto")
 
     # Remove any existing image
     remove_existing(client, config)
