@@ -40,6 +40,9 @@ def run(config_path):
                                             os.path.join("/opt/solr/server/solr/mycores", index["name"], "data/index")),
                            user='solr')
 
+    # Restart the container (and thus Solr) to load the indexes.
+    container.restart()
+
 
 # Remove any existing containers
 def remove_existing(client, config):
