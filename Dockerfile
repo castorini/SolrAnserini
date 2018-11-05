@@ -21,6 +21,9 @@ COPY --chown=solr configsets/. server/solr/configsets
 # Create cores
 RUN precreate-core core17 server/solr/configsets/core17
 RUN precreate-core mb11 server/solr/configsets/mb11
+RUN precreate-core mb13 server/solr/configsets/mb13
+RUN precreate-core robust04 server/solr/configsets/robust04
+RUN precreate-core wash18 server/solr/configsets/wash18
 
 # Start the server.
 CMD solr-foreground
