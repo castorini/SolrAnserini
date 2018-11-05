@@ -29,4 +29,3 @@ Build Anserini and copy the fatjar (important) artifact into the root directory 
 1. Edit the `config.json` file to point to the index and config locations on the host machine.
 2. Run the Python script to build the Docker image with index and config volumes mounted.
     - `python run.py` (optionally specifying `--config <config_location>`)
-3. Wait about 20 seconds and reload each core from the admin UI (`http://localhost:8983`).
