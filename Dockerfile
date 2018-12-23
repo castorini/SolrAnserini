@@ -1,4 +1,4 @@
-FROM solr:7.4-alpine
+FROM solr:7.6-alpine
 
 # Do some setup as root.
 USER root
